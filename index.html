@@ -6,16 +6,13 @@
     </head>
     <body>
         <script type="text/javascript" language=javascript>
-            if (window.navigator.systemLanguage == undefined) {
+            const browserLang = navigator.language || navigator.browserLanguage || 'en'
+            if (browserLang.startsWith('zh')) {
+                window.location='privacy_zh.html';
+            } else if (browserLang.startsWith('en')) {
                 window.location='privacy_en.html';
-            } else {
-                if (window.navigator.systemLanguage.startsWith('zh')) {
-                    window.location='privacy_zh.html';
-                } else if (window.navigator.systemLanguage.startsWith('en')) {
-                    window.location='privacy_en.html';
-                }  else {
-                    window.location='privacy_en.html';
-                }
+            }  else {
+                window.location='privacy_en.html';
             }
         </script>
     </body>
