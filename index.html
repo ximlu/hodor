@@ -6,7 +6,7 @@
     </head>
     <body>
         <script type="text/javascript" language=javascript>
-            const browserLang = navigator.language || navigator.browserLanguage || 'en'
+            const browserLang = window.navigator.language || window.navigator.browserLanguage || window.navigator.systemLanguage || 'en'
             if (browserLang.startsWith('zh')) {
                 window.location='privacy_zh.html';
             } else if (browserLang.startsWith('en')) {
