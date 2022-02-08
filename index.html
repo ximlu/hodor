@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hodor</title>
+    </head>
+    <body>
+        <script type="text/javascript" language=javascript>
+            if (window.navigator.systemLanguage == undefined) {
+                window.location='privacy_en.html';
+            } else {
+                if (window.navigator.systemLanguage.startsWith('zh')) {
+                    window.location='privacy_zh.html';
+                } else if (window.navigator.systemLanguage.startsWith('en')) {
+                    window.location='privacy_en.html';
+                }  else {
+                    window.location='privacy_en.html';
+                }
+            }
+        </script>
+    </body>
+</html>
+
