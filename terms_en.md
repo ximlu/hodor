@@ -1,4 +1,4 @@
-## User Agreement
+## Terms of Service
 
 Welcome to Hodor (hereinafter referred to as "APP"). These service terms apply to all users of APP. By using APP and/or linking to any files on any other site accessed through APP, you agree to comply with these service terms and Hodor's privacy policy [https://ximlu.github.io/hodor/privacy_en.html](https://ximlu.github.io/hodor/privacy_en.html).
 We reserve the right to modify or revise these service terms without notice, and you agree to be bound by such modifications or revisions.
