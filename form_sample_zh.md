@@ -1,17 +1,3 @@
-### Multipart/Form-Data修改
+### Multipart/Form-Data重写示例
 
-	POST /submit-form HTTP/1.1
-	Host: example.com
-	Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-	Content-Length: 248
-	
-	------WebKitFormBoundary7MA4YWxkTrZu0gW
-	Content-Disposition: form-data; name="text"
-	
-	Hello World!
-	------WebKitFormBoundary7MA4YWxkTrZu0gW
-	Content-Disposition: form-data; name="image"; filename="example.png"
-	Content-Type: image/png
-	
-	(binary data)
-	------WebKitFormBoundary7MA4YWxkTrZu0gW--
+Multipart/Form-Data修改比较简单具体可以查看[总文档](https://ximlu.github.io/hodor/rewrite_zh.html)
