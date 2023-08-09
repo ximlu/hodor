@@ -1,6 +1,6 @@
-### 通过KeyPath方式修改数据
+### Modifying data through KeyPath
 
-KeyPath的核心逻辑，字典路径访问使用`.`，数组路径访问使用`[number]`或者`[*]`，以下示例均使用此JSON数据基础更改
+The core logic of KeyPath, dictionary path access using `.`, The array path access uses either `[number]` or `[*]`, and the following examples use this JSON data base change
 
     {
         "detail": {
@@ -22,8 +22,8 @@ KeyPath的核心逻辑，字典路径访问使用`.`，数组路径访问使用`
         }
     }
 
-#### 1. 修改字典的数据
-将result中的code值更改为error，这里全部为字典访问可以将KeyPath设置为`result.code`, 值设置为error，数据类型选择string或者auto（auto时数据会被转换为原数据类型），得到的结果如下
+#### 1. Modifying Dictionary Data
+Change the code value in the result to error, all of which are dictionary access. You can set the KeyPath to `result.code`, set the value to error, and select string or auto as the data type (when auto is used, the data will be converted to the original data type). The results are as follows
 
     {
       "detail" : {
@@ -48,8 +48,8 @@ KeyPath的核心逻辑，字典路径访问使用`.`，数组路径访问使用`
       }
     }
 
-#### 2. 修改数组里的某个数据的值
-将authList中的第2个name替换为AAAAA，这里authList为数组，前后均为字典，可以将KeyPath设置为`detail.authList[1].name`, 值设置为AAAAA，数据类型选择string或者auto（auto时数据会被转换为原数据类型），得到的结果如下
+#### 2. Modify the value of a certain data in an array
+Replace the second name in authList with AAAAA, where authList is an array with a dictionary before and after. You can set KeyPath to `detail.authList[1].name`, value to AAAAA, and data type to string or auto (when auto is used, the data will be converted to the original data type). The results are as follows
 
     {
       "detail" : {
@@ -74,9 +74,9 @@ KeyPath的核心逻辑，字典路径访问使用`.`，数组路径访问使用`
       }
     }
 
-#### 3. 修改数组里的所有数据的值
+#### 3. Modify the values of all data in the array
 
-将authList中的所有的name替换为AAAAA，这里authList为数组，前后均为字典，可以将KeyPath设置为`detail.authList[*].name`, 值设置为AAAAA，数据类型选择string或者auto（auto时数据会被转换为原数据类型），得到的结果如下
+Replace all names in the authList with AAAAA, where authList is an array with dictionaries before and after. You can set KeyPath to `detail.authList[*].name`, value to AAAAA, and data type to string or auto (when auto is used, the data will be converted to the original data type). The results are as follows
 
     {
       "result" : {
