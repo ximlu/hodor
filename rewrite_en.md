@@ -32,80 +32,24 @@ HTTP Header is a set of key-value pairs, and you can add or delete certain value
 
 HTTP Body can be encoded in many different ways. Hodor supports three encoding methods to modify key-value pairs: JSON, x-www-form-urlencoded, and multipart/form-data. Of course, you can also replace the entire body part dynamically. You only need to prepare the data in advance, and when the corresponding request is matched, Hodor will replace the body.
 
-#### Decode and Modify as JSON
+### Body Rewrite
+The HTTP Body can be encoded in various ways. Hodor supports decoding the data into 4 encoding formats and modifying it in a key-value pair manner: text, JSON, x-www-form-urlencoded, and multipart/form-data. Of course, you can also dynamically replace the entire Body section by preparing the data in advance. When a matching request is encountered, the Body will be replaced.
 
-JSON rewriting works by matching the KeyPath and replacing or adding the Value, or deleting the corresponding Key and Value.
+#### 1. Decoding and modifying as text using regular expressions
 
-##### 1. What is KeyPath?
-JSON modification can replace or delete a value by means of a KeyPath.  
-KeyPath represents a JSON access path string designed using the keywords ".", "*", "[]", with "." used for dictionary extraction, "*" and "[]" used for array extraction.
+For detailed documentation, please refer to the [sample document](https://ximlu.github.io/hodor/regex_sample_en.html).
 
-    {
-     "A": "a1", 
-     "B": {
-        "B1": "bbbb", // String type
-        "B2": 110  // Int type
-     }, 
-     "C": [{
-            "C1": "cccc"
-        }, 
-        {
-            "C1": "ccccc"
-        }]
-    }
+#### 2. Decoding and modifying as JSON
 
-For example, if you want to access the value of B2, your KeyPath should be like this:
-`B.B2`  
-If you want to access the value of the first C1, your KeyPath should be like this:
-`C[0].C1`  // where 0 is the array index
-If you want to locate all C1, your KeyPath should be like this:
-`C[*].C1` // where * is a wildcard, matching all content in the array
+For detailed documentation, please refer to the [sample document](https://ximlu.github.io/hodor/json_sample_en.html).
 
-##### 2. JSON-encoded data has types, so the data type of the corresponding value should be specified when modifying the data.
-*auto type*  
-If the value type you set is auto, then the value will be automatically converted to the same data type as the original value. If the type conversion fails, an exception will be thrown and stored in the rewrite log. If there is no original value, it will be converted to a String type and inserted into the corresponding location.  
-For example, if you want to replace the value of B2, the KeyPath should be set to `B.B2`, and the value you set should be `900`, with the data type set to `auto`. Then, this data will be automatically converted to an Int type.  
+#### 3. Decoding and modifying as x-www-form-urlencoded
 
-*Specified value data type*  
-If you specify the data type of the modified value, then when adding or replacing the value, the value you set will be converted to the data type you specify before adding or replacing the corresponding value. Similarly, if the type conversion fails, an exception will be thrown and stored in the rewrite log.
+For detailed documentation, please refer to the [sample document](https://ximlu.github.io/hodor/url_encoded_sample_en.html).
 
-#### Decode and Modify as x-www-form-urlencoded
+#### 4. Decoding and modifying as multipart/form-data
 
-x-www-form-urlencoded rewriting is decoded into key-value pairs and works by matching Keys, replacing or adding Values, or deleting corresponding Keys and Values.
-
-Specifically, in x-www-form-urlencoded, each parameter of the request is represented as "key=value", with different parameters separated by the "&" symbol. For example:
-
-    name=value1&age=value2&address=value3
-
-These parameter names and values need to be URL encoded, for example, "value 1" will be encoded as "value%201". When rewriting, you don't need to manually process URL encoding, as the system will handle it automatically.
-
-#### Decode and Modify as multipart/form-data
-
-HTTP multipart/form-data is a data format consisting of multiple parts, often used for client-server requests with file uploads.
-
-In the multipart/form-data data format, each form item consists of an independent part, with parts separated by a boundary. Each part can include a header with associated content, such as text, binary data, etc. The headers usually contain keywords such as Content-Disposition and Content-Type to describe the type, name, and encoding of the part, and the body is the actual data carried.
-
-The following is an example of a multipart/form-data data format:
-
-    POST /submit-form HTTP/1.1
-    Host: example.com
-    Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-    Content-Length: 248
-    
-    ------WebKitFormBoundary7MA4YWxkTrZu0gW
-    Content-Disposition: form-data; name="text"
-    
-    Hello World!
-    ------WebKitFormBoundary7MA4YWxkTrZu0gW
-    Content-Disposition: form-data; name="image"; filename="example.png"
-    Content-Type: image/png
-    
-    (binary data)
-    ------WebKitFormBoundary7MA4YWxkTrZu0gW--
-    
-The above example shows a multipart/form-data request containing two form items: text and image. The text form item is plain text, whereas the image form item contains a file named example.png. The text and file data are located in different parts, with each part having its own content-type, name, and body content.
-
-When rewriting, name and filename in the rewrite rules correspond to the Content-Disposition's name and filename. Hodor only supports the modification of name and corresponding content.
+For detailed documentation, please refer to the [sample document](https://ximlu.github.io/hodor/form_sample_en.html).
 
 ### Code Rewrite
 
