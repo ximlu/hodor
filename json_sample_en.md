@@ -148,7 +148,7 @@ In this case, the KeyPath can be set as `result` and the value can be set as `{"
  	}]
  },
  "result" : {
-    "a" : a,
+    "a" : 1,
     "b" : "ok"
   }
 }
