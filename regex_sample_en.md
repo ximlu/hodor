@@ -1,6 +1,6 @@
 ## Example of Modifying Data Using Regular Expressions
 
-Regular expression rewriting supports modifying data in text-based bodies. As long as you select the `text` option, Hodor will attempt to parse the body data as text and then use regular expressions for replacement.
+Regular expression rewriting supports the modification of text data. As long as you select the text option, Hodor will attempt to parse the body data as text and then use regular expressions for replacement.
 
 ### There are two ways to use regular expressions for replacement:  
 **① Directly replacing the matched string (matching a segment of data and replacing that segment).**  
