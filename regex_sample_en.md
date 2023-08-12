@@ -1,98 +1,93 @@
-### Modifying Text Data with Regular Expressions
+## Example of Modifying Data Using Regular Expressions
 
-Regular expression rewriting is the process of converting body data to text and then using rules to perform replacements.
+Regular expression rewriting supports modifying data in text-based bodies. As long as you select the `text` option, Hodor will attempt to parse the body data as text and then use regular expressions for replacement.
 
-Regular expressions support two types of replacements:  
-**①Directly replace the string matched by the regular expression (match a piece of data and replace that data).**  
-**②Replace the matched group using group method (match a piece of data, but only replace part of its content).**
+### There are two ways to use regular expressions for replacement:  
+**① Directly replacing the matched string (matching a segment of data and replacing that segment).**  
 
-Here are some commonly used examples (all examples are based on a JSON data):
+For example, using the regular expression `\d+` to replace the number 888 in the string `"sample":"8888eeee"`.  
 
-    {
-        "sessionId": 88888888,
-        "hasVIP": false,
-        "authList": [{
-            "name": "Adam",
-            "isValid": false,
-            "startTime": 1581609600000
-        }, {
-            "name": "Andrew",
-            "isValid": false,
-            "startTime": 1581609600000
-        }]
-    }
-    
-#### 1. Replace all matched data
-Replace all matching data by setting the regular expression to `\d+` and the replacement value to `000000000`. The result will be:
+**② Using group substitution (matching a segment of data, but only replacing the content within the parentheses of the regular expression).**  
 
-    {
-        "sessionId": 000000000,
-        "hasVIP": false,
-        "authList": [{
-            "name": "Adam",
-            "isValid": false,
-            "startTime": 000000000
-        }, {
-            "name": "Andrew",
-            "isValid": false,
-            "startTime": 000000000
-        }]
-    }
-    
-#### 2. Replace a matching data separately
-To replace a specific matching data, set the regular expression to `\d+`, choose to match multiple values and set the index to `1`. Then, set the replacement value to `000000000`. The result will be:
+For example, using the regular expression `"sample":"(.+?)"` to replace the value part `8888eeee` in the string `"sample":"8888eeee"`.  
 
-    {
-        "sessionId": 88888888,
-        "hasVIP": false,
-        "authList": [{
-            "name": "Adam",
-            "isValid": false,
-            "startTime": 000000000
-        }, {
-            "name": "Andrew",
-            "isValid": false,
-            "startTime": 1581609600000
-        }]
-    }
+### Examples of common scenarios (all cases are based on JSON data)
+
+	{
+	 "sessionId": 88888888,
+	 "authList": [{
+		"name": "Adam",
+		"startTime": 1581609600000
+	 }, {
+		"name": "Andrew",
+		"startTime": 1581609600000
+	 }]
+	}
+	
+#### 1. Replacing all matched data
+Replace all numbers with 1234. Set the regular expression as `\d+` and the replacement value as 1234. The result is as follows:
+
+	{
+	 "sessionId": 1234,
+	 "authList": [{
+		"name": "Adam",
+		"startTime": 1234
+	 }, {
+		"name": "Andrew",
+		"startTime": 1234
+	 }]
+	}
+	
+#### 2. Replacing a specific matched data
+Replace a specific part of the matched data with 1234. Set the regular expression as `\d+`, select the option to match multiple values individually, and set the corresponding index value to 1. Set the replacement value as 1234. The result is as follows:
+
+	{
+	 "sessionId": 88888888,
+	 "authList": [{
+		"name": "Adam",
+		"startTime": 1234
+	 }, {
+		"name": "Andrew",
+		"startTime": 1581609600000
+	 }]
+	}
 
 
-#### 3. Replace the matched grouped data (i.e. replace the matching values in the regular expression parentheses)
+#### 3. Replacing matched group data (i.e., replacing the matched values within the parentheses of the regular expression)
+Replace the value of name with ====. Set the regular expression as `"name": "(.*?)",` and the replacement value as ====. Select the option to replace all matches. The result is as follows:
 
-To replace a matching group data, set the regular expression to `"name": "(.*?)",` and the replacement value to `Anla`. Choose to replace all matches. The result will be:
-
-    {
-        "sessionId": 88888888,
-        "hasVIP": false,
-        "authList": [{
-            "name": "Anla",
-            "isValid": false,
-            "startTime": 1581609600000
-        }, {
-            "name": "Anla",
-            "isValid": false,
-            "startTime": 1581609600000
-        }]
-    }
+	{
+	 "sessionId": 88888888,
+	 "authList": [{
+		"name": "====",
+		"startTime": 1581609600000
+	 }, {
+		"name": "====",
+		"startTime": 1581609600000
+	 }]
+	}
 
 
-#### 4. Replace multiple matched group data (replace multiple group values at once)
+#### 4. Replacing multiple matched group data (simultaneously replacing multiple group values)
+Set multiple groups in a single regular expression for replacement. For example, replace all name with ==== and replace startTime with 1234. Set the regular expression as `"name": "(.*?)",[\s\S]*?"startTime": (\d+)`. Set the replacement value as two lines: ==== on the first line and 1234 on the second line. The result is as follows:
 
-Set multiple groups and replace them in a regular expression, such as replacing all names with Anala and startTime with 000000. Set the regular expression to `"name": "(.*?)",[\s\S]*?"startTime": (\d+)`, the replacement value should be set with a newline character. The first line is `Anala`, and the second line is `0000000`. The results obtained are as follows "
+	{
+	 "sessionId": 88888888,
+	 "authList": [{
+		"name": "====",
+		"startTime": 1234
+	 }, {
+		"name": "====",
+		"startTime": 1234
+	 }]
+	}
 
-    {
-        "sessionId": 88888888,
-        "hasVIP": false,
-        "authList": [{
-            "name": "Anla",
-            "isValid": false,
-            "startTime": 0000000
-        }, {
-            "name": "Anla",
-            "isValid": false,
-            "startTime": 0000000
-        }]
-    }
+### Explanation of Regular Expression Parameters:
 
+* Optional parameters: Regular expression replacement is based on the NSRegularExpression framework. For specific usage, you can refer to the [documentation](https://developer.apple.com/documentation/foundation/nsregularexpression/options).
 
+* Matching scope: When matching, you can choose the matching range of the regular expression. `location` is the starting position of the string, and `length` represents the length after the starting position.
 
+* Replacing all matches when replacing values: This means that when your regular expression matches multiple data, all matched data will be replaced in sequence.
+
+* Replacing individually when replacing values: This means that when your regular expression matches multiple data, the corresponding data will be replaced based on the array index you provide.
