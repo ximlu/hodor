@@ -8,6 +8,7 @@ TCP拆包协议未指定时，将按照TCP每次发送或接收进行数据的�
 #### JSONRPC
 
 ``JSONRPC`` 负责以 'Content-Length' HTTP-like 头部格式发出 JSON-RPC 无线协议，例如 LSP（语言服务器协议）。
+
     +---------------------+
     | Content-Length: 100 |
     +---------------------+
