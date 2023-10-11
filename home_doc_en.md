@@ -1,3 +1,18 @@
-Hodor使用手册
+### Hodor User Manual
 
-HTTP是一款基于IP协议的抓包工具，因为应用市场上的抓包软件均是通过系统HTTP代理做的转发，而Flutter等一些软件通过一些技术手段绕过了系统HTTP代理。但是Hodor是基于IP协议实现的，更底层，因此能抓到所有的数据流量。除了Flutter，很多原生App也会绕过系统HTTP代理，但是如果你使用Hodor所有的HTTP流量都可以抓到。
+HTTP is a packet capture tool based on the IP protocol. Most packet capture software in the current market captures data through system HTTP proxies. However, software developed with Flutter bypasses the system HTTP proxy through various technical means. Hodor, on the other hand, is implemented based on the IP protocol and operates at a lower level, therefore capturing all data traffic. In addition to Flutter, many native apps also bypass the system HTTP proxy, but if you use Hodor, all HTTP traffic can be captured.
+
+#### 1. Filter User Manual
+
+You can set some filter rules to capture specific requests.  
+For more information, please refer to the [User Manual](https://ximlu.github.io/hodor/record_en.html).
+
+#### 2. Rewriting User Manual
+
+You can set a series of rules to debug the client or server.  
+For more information, please refer to the [User Manual](https://ximlu.github.io/hodor/rewrite_en.html).
+
+#### 3. HTTP Proxy User Manual
+
+You can forward system traffic to a specified HTTP proxy server to better handle the data.  
+For more information, please refer to the [User Manual](https://ximlu.github.io/hodor/proxy_en.html).
