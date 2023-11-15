@@ -1,15 +1,9 @@
-### x-www-form-urlencoded重写示例
+### Decode and Modify as x-www-form-urlencoded
 
-name=value1&age=value2&address=value3
+x-www-form-urlencoded rewriting is decoded into key-value pairs and works by matching Keys, replacing or adding Values, or deleting corresponding Keys and Values.
 
-#### 1. 值替换
+Specifically, in x-www-form-urlencoded, each parameter of the request is represented as "key=value", with different parameters separated by the "&" symbol. For example:
 
-T
-#### 2. What is the CONNECT protocol, and why are there so many CONNECT requests in my records?
+    name=value1&age=value2&address=value3
 
-
-#### 3. Why do some requests still show CONNECT even though I have enabled MITM?
-
-
-#### 4. To use Hodor capture skillfully, you must understand the components of the URL.
-
+These parameter names and values need to be URL encoded, for example, "value 1" will be encoded as "value%201". When rewriting, you don't need to manually process URL encoding, as the system will handle it automatically.

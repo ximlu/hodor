@@ -15,7 +15,6 @@ URLScheme 可以用于通过其他应用程序控制Hodor，或创建快捷指�
 | rewrite | true 或 false | 启用或禁用重写功能 |
 | rewriterule | 重写规则名称 | 根据名称切换到相应的重写规则 |
 | proxy | 主机:端口 | 根据主机地址和端口号切换到相应的代理服务器 |
-| advance | true 或 false | 启用或禁用高级功能 |
 | lan | true 或 false | 启用或禁用本地网络数据包抓包功能 |
 
 #### 关闭抓包
