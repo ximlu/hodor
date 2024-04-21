@@ -7,8 +7,8 @@ Hodor - HTTP Sniffer/Capture on iOS for Network Debug & Inspect. [Download from 
 
 ###Features
 
-- Native HTTP(s) packet capture
-- LAN HTTP(s) packet capture
+- Native HTTP(s) packet sniffer
+- LAN HTTP(s) packet sniffer
 - Capture packets through keywords or wildcards
 - Support ios13 dark style
 
