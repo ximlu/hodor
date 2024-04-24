@@ -1,38 +1,37 @@
-### Capture Knowledge
+### Packet Capture Related Knowledge
 
-#### 1. Why can Hodor capture Flutter traffic while other capture software cannot?
+#### 1. Why can Hodor capture Flutter traffic while other packet capture software cannot?
 
-This is because capture software on the app market uses system HTTP proxies to forward traffic, while some applications such as Flutter use techniques to bypass the system HTTP proxies. However, Hodor is implemented based on the IP protocol, which is lower-level, hence it can capture all data traffic. In addition to Flutter, many native apps also bypass system HTTP proxies, but if you use Hodor, all HTTP traffic can be captured.
+Most packet capture software in the application market captures traffic through system HTTP proxies. However, some software like Flutter bypasses system HTTP proxies using various technical means. Hodor, being implemented based on the IP protocol and operating at a lower level, can capture all data traffic. Apart from Flutter, many native apps also bypass system HTTP proxies. But with Hodor, all HTTP traffic can be captured.
 
-#### 2. What is the CONNECT protocol, and why are there so many CONNECT requests in my records?
+#### 2. What is the CONNECT protocol, and why do I see many CONNECT requests in my records?
 
-The CONNECT protocol is a protocol for establishing tunnel connections between the client and server, typically used for SSL/TLS encrypted communication and proxy servers. Using this protocol, the client can communicate directly with the target server. In short, the system converts the encrypted HTTPS traffic into a CONNECT protocol. When the proxy server receives the CONNECT protocol, it will forward the corresponding traffic directly without being concerned about its content. Therefore, if you do not decrypt data traffic using MITM, you will only see CONNECT requests.
+The CONNECT protocol is used to establish tunnel connections between clients and servers, commonly used for SSL/TLS encrypted communication and proxy servers. Through this protocol, clients can communicate directly with target servers, and HTTPS traffic that cannot be decrypted appears as CONNECT requests.
 
-In Hodor, if you enable advanced mode, it captures TCP traffic and converts it to a CONNECT request to forward to the proxy server. Therefore, if you want to view TCP traffic, you can pay attention to the CONNECT request of the corresponding domain name.
+#### 3. Why do I still see CONNECT requests even after enabling MITM?
 
-#### 3. Why do some requests still show CONNECT even though I have enabled MITM?
+MITM decryption only supports generic SSL/TLS. If the client performs strong certificate validation, decryption is not possible, and such requests are recorded as CONNECT requests.
 
-This is because MITM decryption supports only one-way authentication, that is, the client authenticates the server. If two-way authentication is adopted, that is, both the client and server need to be authenticated, it cannot be decrypted. Requests that cannot be decrypted will be recorded as CONNECT requests.
+#### 4. It's essential to understand the components of a URL for effective use of Hodor for packet capture.
 
-#### 4. To use Hodor capture skillfully, you must understand the components of the URL.
+URL (Uniform Resource Locator) is an address used to identify the location of resources on the internet. It consists of several parts:
 
-A Uniform Resource Locator (URL) is an address used to identify the location of a resource on the Internet. It consists of several parts:
+- `scheme`: Specifies the protocol used to access the resource, such as HTTP, HTTPS, FTP, etc.
+- `host`: Specifies the domain name or IP address of the server.
+- `port`: Specifies the port number on which the server provides the service. If not explicitly specified, the default port is used.
+- `path`: Specifies the specific path of the resource on the server, starting with a slash (/).
+- `query`: Additional information parameters passed in the URL, starting with a question mark (?), multiple parameters are connected with &, represented as key-value pairs.
 
-`scheme`: specifies the protocol used to access the resource, such as HTTP, HTTPS, FTP, etc.  
-`host`: specifies the domain name or IP address of the server.  
-`port`: specifies the port number on which the server provides the service, and if not explicitly specified, the default port number is used.  
-`path`: specifies the specific path of the resource on the server, starting with a forward slash /.  
-`query`: passes additional information parameters in the URL, starting with a question mark ?, multiple parameters are connected by &, combined as key-value pairs.  
+For example:
 
-Examples:
+	http://example.com:8080/path/to/resource?foo=bar&foo1=bar1
 
-	 http://example.com:8080/path/to/resource?foo=bar&foo1=bar1
+- Scheme is `HTTP`.
+- Host is `example.com`.
+- Port is `8080`.
+- Path is `/path/to/resource`.
+- Query parameters are `foo=bar&foo1=bar1`.
 
-`scheme` is `HTTP`  
-`host` is `example.com`  
-`port` is `8080`  
-`path` is `/path/to/resource`  
-`query` parameters are `foo=bar&foo1=bar1`  
-For matching, these components are independently used for matching.
+These components are separately matched when matching URLs.
 
-***Finally, Due to the various combinations of transmission control in the HTTP protocol, the author may have overlooked some aspects during testing. If you find that a certain function is not working according to the documentation or does not meet your expectations, please contact us via email at `hodorsoft@outlook.com`. Writing this software was not easy, and if you find it useful, we hope you can leave a positive review on the AppStore. Your support is our greatest motivation for future updates.***
+***If you have any usage questions, you can contact us via email at [hodorsoft@outlook.com](hodorsoft@outlook.com). You can also leave a five-star review on the App Store. Your support is the greatest motivation for our updates.***

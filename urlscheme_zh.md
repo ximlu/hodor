@@ -22,4 +22,4 @@ URLScheme 可以用于通过其他应用程序控制Hodor，或创建快捷指�
 ```hodor://shutdown``` 
 
 
-***写在最后：由于HTTP协议的传输控制有非常多的组合方式，作者在测试时难免有考虑不周的地方，如果你发现某个功能没有按照文档的描述运作，或者说没有达到您的预期结果，请通过email联系我们`hodorsoft@outlook.com`。创作不易，如果您觉得用起来顺手，希望去AppStore给个好评，你的支持是我更新的最大动力。***
+***如果您有任何使用问题，可以通过email联系我们[hodorsoft@outlook.com](hodorsoft@outlook.com)，也可以在App Store给个五星好评，您的支持是我更新的最大动力。***

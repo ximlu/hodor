@@ -9,5 +9,3 @@ When HTTP requests are modified, all data needs to be collected (and if compress
 #### 2. Setting Decompression Buffer Size
 
 HTTP can compress the Body in transit to improve transmission efficiency. In modifying the Body, a buffer needs to be pre-set for decompression. We set this value based on the compression ratio of the data. If this value is set too small, incomplete data decompression may occur, resulting in decoding failure; if set too large, memory overflow may occur. In actual testing, the author has found that some JSON files can achieve a compression ratio of up to 13 times.
-
-***Finally: Due to the various combinations of transmission control in the HTTP protocol, the author may have overlooked certain aspects during testing. If you find that a certain function is not operating according to the documentation or does not meet your expectations, please contact us via email at `hodorsoft@outlook.com`. Writing is not an easy process, if you find this tool convenient to use, please leave a positive review on the App Store. Your support is the driving force for our updates.***
