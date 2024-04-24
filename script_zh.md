@@ -47,3 +47,6 @@ Hodor支持5个或6个部分的Cron表达式。
 
 - 一分钟执行一次Cron表达式  `* * * * *`  
 - 一秒执行一次Cron表达式  `* * * * * *`
+
+
+***如果您有任何使用问题，可以通过email联系我们[hodorsoft@outlook.com](hodorsoft@outlook.com)，也可以在App Store给个五星好评，您的支持是我更新的最大动力。***

@@ -51,3 +51,6 @@ Here are some cron examples:
 
 - Cron expression to execute every minute: `* * * * *`  
 - Cron expression to execute every second: `* * * * * *`
+
+***If you have any usage questions, you can contact us via email at [hodorsoft@outlook.com](hodorsoft@outlook.com). You can also leave a 
+five-star review on the App Store. Your support is the greatest motivation for our updates.***
