@@ -2,7 +2,7 @@
 
 Hodor supports three types of scripts, corresponding to four JavaScript entry functions. Hodor will call the corresponding interface functions at appropriate times. You only need to write the logic you want based on the parameters of the entry function.   
 
-The JavaScript API used by Hodor can be found in the [interface documentation](https://ximlu.github.io/global.html#onRequest).
+The JavaScript API used by Hodor can be found in the [interface documentation](https://ximlu.github.io/global.html#onRequest)(Please view on a computer for better readability).
 
 ### 1. HTTP Rewrite  
 **Called before the app sends a request to the real server and before the real server responds to the app, can be used to dynamically modify HTTP requests and responses.**

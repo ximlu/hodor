@@ -2,7 +2,7 @@
 
 Hodor支持3种脚本类型，对应了4个JavaScript的入口函数，Hodor会在合适的时间调用对应的接口函数，您仅需要根据入口函数的参数编写您想要的逻辑即可。  
 
-Hodor所用到的JavaScript的API您可以[点击并查看接口文档](https://ximlu.github.io/global.html#onRequest)。
+Hodor所用到的JavaScript的API您可以[点击并查看接口文档](https://ximlu.github.io/global.html#onRequest)。(建议在电脑端查看)
 
 ### 1、HTTP Rewrite  
 **在app向real server发送请求前以及real server向app返回响应前调用，可用于动态修改HTTP请求以及HTTP响应**
